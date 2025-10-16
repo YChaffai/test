@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Batiment List{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Batiment List</h1>
+    <a href="{{ path('app_batiment_create') }}">Create New Batiment</a>
+    <div>
+    {% for batiment in batiments %}
+        <div>
+        <p><b>Nom : </b> {{ batiment.nom }} </p>
+        <p><b>NbEtage : </b> {{ batiment.nbEtage }} </p>
+        <p><b>NbEtage : </b> {{ batiment.dateConstruction | date("d-m-Y") }} </p>
+        <p><b>NbEtage : </b> {{ batiment.disponible }} </p>
+        <a  href="{{ path('app_batiment_delete', { id : batiment.id })}}">Delete</a>
+        <a  href="{{ path('app_batiment_update', { id : batiment.id })}}">Update</a>
+        <a  href="{{ path('app_batiment_details', { id : batiment.id })}}">Details</a>
+        
+        
+        </div><hr>
+    {% endfor %}
+</div>
+{% endblock %}
